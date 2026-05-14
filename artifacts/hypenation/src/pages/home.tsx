@@ -54,10 +54,21 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Abstract background noise/gradient to replace an actual video if none is available, but feels immersive */}
+        {/* Video Background */}
         <div className="absolute inset-0 bg-black z-0">
-          <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgibm9pc2VGaWx0ZXIpIi8+PC9zdmc+')] pointer-events-none mix-blend-overlay"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-primary/20 blur-[120px] rounded-full"></div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-50"
+            data-testid="video-hero-bg"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-crowd-at-a-concert-2-22.mp4" type="video/mp4" />
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-crowd-cheering-at-a-concert-4027.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-10"></div>
+          <div className="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2VGaWx0ZXIpIi8+PC9zdmc+')] pointer-events-none mix-blend-overlay z-20"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-6 text-center flex flex-col items-center">
@@ -285,15 +296,116 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-border bg-black text-sm font-mono text-muted-foreground">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-primary transition-colors">INSTAGRAM</a>
-            <a href="#" className="hover:text-primary transition-colors">VIMEO</a>
-            <a href="#" className="hover:text-primary transition-colors">YOUTUBE</a>
+      <footer className="bg-black border-t border-border/40">
+        {/* CTA Strip */}
+        <div className="border-b border-border/40">
+          <div className="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div>
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2">Ready to shoot?</p>
+              <h3 className="text-4xl md:text-5xl font-display font-bold uppercase tracking-tight leading-none">
+                Let's make<br /><span className="text-primary">something real.</span>
+              </h3>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <Button className="rounded-none font-bold uppercase tracking-wider h-12 px-8 text-black" data-testid="footer-button-start">
+                Start a Project
+              </Button>
+              <Button variant="outline" className="rounded-none font-bold uppercase tracking-wider h-12 px-8 border-border hover:bg-white hover:text-black" data-testid="footer-button-reel">
+                View Showreel
+              </Button>
+            </div>
           </div>
-          <div>
-            &copy; 2025 HYPENATION MEDIA. ALL RIGHTS RESERVED.
+        </div>
+
+        {/* Main Footer Grid */}
+        <div className="container mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <div className="text-2xl font-display font-bold tracking-tighter mb-4">HYPENATION</div>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 font-mono">
+                Raw, real, relentlessly visual. We capture and craft moments that outlive the night.
+              </p>
+              <div className="flex gap-4">
+                {["IG", "YT", "VM", "TK"].map((social) => (
+                  <a
+                    key={social}
+                    href="#"
+                    className="w-9 h-9 border border-border flex items-center justify-center text-xs font-mono font-bold hover:border-primary hover:text-primary transition-all"
+                    data-testid={`footer-social-${social.toLowerCase()}`}
+                  >
+                    {social}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Company Links */}
+            <div>
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">Company</p>
+              <ul className="space-y-3">
+                {["About Us", "Our Work", "Services", "Clients", "Contact"].map((item) => (
+                  <li key={item}>
+                    <a href={`#${item.toLowerCase().replace(/\s/g, "-")}`} className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2 group" data-testid={`footer-link-${item.toLowerCase().replace(/\s/g, "-")}`}>
+                      <span className="w-4 h-px bg-border group-hover:bg-primary group-hover:w-6 transition-all"></span>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services Links */}
+            <div>
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">Services</p>
+              <ul className="space-y-3">
+                {["Festival & Portrait Shots", "VHS & VFX Content", "Reel Content", "Drone Content", "Aftermovies"].map((item) => (
+                  <li key={item}>
+                    <a href="#services" className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2 group" data-testid={`footer-service-${item.split(" ")[0].toLowerCase()}`}>
+                      <span className="w-4 h-px bg-border group-hover:bg-primary group-hover:w-6 transition-all"></span>
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact + Newsletter */}
+            <div>
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">Contact</p>
+              <div className="space-y-2 text-sm font-mono mb-8">
+                <p className="text-muted-foreground">Cape Town, South Africa</p>
+                <a href="mailto:info@hypenation.media" className="block hover:text-primary transition-colors" data-testid="footer-email">
+                  info@hypenation.media
+                </a>
+                <a href="tel:+27123456789" className="block hover:text-primary transition-colors" data-testid="footer-phone">
+                  +27 12 345 6789
+                </a>
+              </div>
+              <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-3">Newsletter</p>
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="flex-1 bg-transparent border border-border border-r-0 px-3 py-2 text-xs font-mono focus:outline-none focus:border-primary transition-colors placeholder:text-muted-foreground/50"
+                  data-testid="footer-newsletter-input"
+                />
+                <button className="bg-primary text-black px-4 py-2 text-xs font-mono font-bold uppercase hover:bg-primary/90 transition-colors" data-testid="footer-newsletter-submit">
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Legal Bar */}
+        <div className="border-t border-border/40">
+          <div className="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-muted-foreground">
+            <span>&copy; 2025 HYPENATION MEDIA. ALL RIGHTS RESERVED.</span>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-primary transition-colors" data-testid="footer-privacy">Privacy Policy</a>
+              <a href="#" className="hover:text-primary transition-colors" data-testid="footer-terms">Terms &amp; Conditions</a>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "W2ZclsTtdfo-OJPprME17"
@@ -24,3 +23,9 @@ id = "hdXfz1IDjY-DP7HvbIkAK"
 uri = "file://artifacts/hypenation/public/images/portfolio-4.png"
 type = "image"
 title = "VHS style still"
+
+[[outputs]]
+id = "xReYuRILJvLTmvg23u6MO"
+uri = "file://hypenation-pitch.md"
+type = "text"
+title = "Hypenation Media — Client Pitch Document"
