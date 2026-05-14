@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "W2ZclsTtdfo-OJPprME17"
+uri = "file://artifacts/hypenation/public/images/portfolio-1.png"
+type = "image"
+title = "Festival crowd view"
+
+[[generated]]
+id = "zBOSfLoweY0E6Pfyu6MlY"
+uri = "file://artifacts/hypenation/public/images/portfolio-2.png"
+type = "image"
+title = "Cinematic portrait"
+
+[[generated]]
+id = "5wcJjOF5MXFln2zXWkwSs"
+uri = "file://artifacts/hypenation/public/images/portfolio-3.png"
+type = "image"
+title = "Drone aerial shot"
+
+[[generated]]
+id = "hdXfz1IDjY-DP7HvbIkAK"
+uri = "file://artifacts/hypenation/public/images/portfolio-4.png"
+type = "image"
+title = "VHS style still"
